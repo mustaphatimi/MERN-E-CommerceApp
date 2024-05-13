@@ -1,0 +1,17 @@
+html {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.pink {
+    color: pink;
+    h1 {
+        font-size: 5rem;
+    }
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

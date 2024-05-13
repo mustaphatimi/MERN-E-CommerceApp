@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "server": "nodemon server/index.js",
+    "client": "npm start --prefix client",
+    "stripe": "stripe listen --forward-to localhost:5000/stripe/webhook",
+    "start": "concurrently \"npm run server\" \"npm run client\" \"npm run stripe\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.4.1"
+  }
+}
