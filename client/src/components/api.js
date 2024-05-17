@@ -1,3 +1,3 @@
-const BACKEND_API = process.env.BACKEND_API;
+const BACKEND_API = process.env.REACT_APP_BACKEND_API
 
 export default BACKEND_API;

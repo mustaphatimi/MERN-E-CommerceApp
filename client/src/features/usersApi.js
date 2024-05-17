@@ -3,7 +3,7 @@ import BACKEND_API from "../components/api";
 
 export const usersApi = createApi({
     reducerPath: 'usersApi',
-    baseQuery: fetchBaseQuery({ baseUrl: `${BACKEND_API}` }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${BACKEND_API}/` }),
     endpoints: (builder) => ({
         register: builder.mutation({
             query: (body) => ({
