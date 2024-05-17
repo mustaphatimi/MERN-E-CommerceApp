@@ -1,8 +1,9 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/query/react";
+import BACKEND_API from "../components/api";
 
 export const usersApi = createApi({
     reducerPath: 'usersApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: `${BACKEND_API}` }),
     endpoints: (builder) => ({
         register: builder.mutation({
             query: (body) => ({
