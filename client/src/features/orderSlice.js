@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import BACKEND_API from "../components/api";
 
 const initialState = {
     list: [],
@@ -10,7 +11,7 @@ export const fetchOrders = createAsyncThunk(
     'orders/fetchOrders',
     async({token}) => {
         try {
-        const res = await axios.get('http://localhost:5000/order/', {
+        const res = await axios.get(`${BACKEND_API}/order/`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -28,7 +29,7 @@ export const editOrder = createAsyncThunk(
         const state = getState()
         try {
             const order = state.orders.list.filter(order => order._id === data.id)
-            const res = await axios.put(`http://localhost:5000/order/${data.id}`, { ...order, delivery_status: data.action },{
+            const res = await axios.put(`${BACKEND_API}/order/${data.id}`, { ...order, delivery_status: data.action },{
           headers: {
             Authorization: `Bearer ${data.token}`
           }

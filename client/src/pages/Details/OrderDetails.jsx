@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import moment from 'moment';
 import Spinner from '../../components/Spinner/Spinner'
+import BACKEND_API from '../../components/api'
 
 const OrderDetails = ({token}) => {
   const { id } = useParams()
@@ -19,7 +20,7 @@ const OrderDetails = ({token}) => {
     setStatus('pending')
     async function fetchOrder(token) {
       try {
-        await axios.get(`http://localhost:5000/order/${id}`, {
+        await axios.get(`${BACKEND_API}/order/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }

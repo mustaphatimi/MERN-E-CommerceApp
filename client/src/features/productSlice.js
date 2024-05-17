@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
+import BACKEND_API from "../components/api";
+
 
 const initialState = {
     items: [],
@@ -15,7 +17,7 @@ export const productsFetch = createAsyncThunk(
     'product/productsFetch',
     async () => {
         try {
-            const res = await axios.get('http://localhost:5000/product')
+            const res = await axios.get(`${BACKEND_API}/product`)
         return res?.data;
         } catch (error) {
             console.log(error)
@@ -28,7 +30,7 @@ export const createProduct = createAsyncThunk(
     'product/createProduct',
     async ({ data, token }) => {
         try {
-            const res = await axios.post('http://localhost:5000/product', data, {
+            const res = await axios.post(`${BACKEND_API}/product`, data, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 Authorization: `Bearer ${token}`
@@ -46,7 +48,7 @@ export const editProduct = createAsyncThunk(
     'product/editProduct',
     async ({ id, token, data }) => {
         try {
-            const res = await axios.put(`http://localhost:5000/product/${id}`, data, {
+            const res = await axios.put(`${BACKEND_API}/product/${id}`, data, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 Authorization: `Bearer ${token}`
@@ -63,7 +65,7 @@ export const getProduct = createAsyncThunk(
     'product/getProduct',
     async ({ id, token }) => {
         try {
-             const res = await axios.get(`http://localhost:5000/product/${id}`, {
+             const res = await axios.get(`${BACKEND_API}/product/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`    
             }
@@ -79,7 +81,7 @@ export const deleteProduct = createAsyncThunk(
     'product/deleteProduct',
     async ({ id, token }) => {
         try {
-             const res = await axios.delete(`http://localhost:5000/product/${id}`, {
+             const res = await axios.delete(`${BACKEND_API}/product/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`    
             }
